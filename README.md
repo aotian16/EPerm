@@ -7,7 +7,7 @@ Permission util for android 6.
 
 ## By jitpack.io
 
-```
+```groovy
 	allprojects {
 		repositories {
 			...
@@ -16,9 +16,9 @@ Permission util for android 6.
 	}
 ```
 
-```
+```groovy
 	dependencies {
-	        compile 'com.github.aotian16:EPerm:v1.0.0'
+	        compile 'com.github.aotian16:EPerm:v1.1.0'
 	}
 ```
 ## Or Download this project and import as a module
@@ -28,7 +28,6 @@ Permission util for android 6.
 ```java
 package com.qefee.pj.testpermissionutil;
 
-import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
@@ -45,14 +44,10 @@ public class MainActivity extends AppCompatActivity {
 
     private static final int MY_PERMISSIONS_REQUEST_CALL_PHONE = 1;
 
-    EPerm callPhonePerm;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        callPhonePerm = EPerm.make(this, Manifest.permission.CALL_PHONE);
 
         Button submitButton = (Button) findViewById(R.id.submitButton);
 
@@ -65,13 +60,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void testCall() {
-        if (callPhonePerm.has()) { // has permission
+        if (EPerm.getCallPhonePerm(this).has()) { // has permission
             callPhone();
         } else {
-            if (callPhonePerm.hasReason()) { // reason for permission
+            if (EPerm.getCallPhonePerm(this).hasReason()) { // reason for permission
                 Toast.makeText(MainActivity.this, "no permission to call!", Toast.LENGTH_SHORT).show();
             } else {
-                callPhonePerm.request(MY_PERMISSIONS_REQUEST_CALL_PHONE); // request permission
+                EPerm.getCallPhonePerm(this).request(MY_PERMISSIONS_REQUEST_CALL_PHONE); // request permission
             }
         }
     }
@@ -109,9 +104,10 @@ public class MainActivity extends AppCompatActivity {
 
 # Version
 
-| No.  | Version | Detail        |
-| :--: | :-----: | ------------- |
-|  1   |  1.0.0  | First version |
+| No.  | Version | Detail              |
+| :--: | :-----: | ------------------- |
+|  1   |  1.0.0  | First version       |
+|  2   |  1.1.0  | add EPerm constants |
 
 # [LICENSE](https://github.com/aotian16/EPerm/blob/master/LICENSE)
 

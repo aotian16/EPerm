@@ -18,7 +18,7 @@ Permission util for android 6.
 
 ```groovy
 	dependencies {
-	        compile 'com.github.aotian16:EPerm:v1.1.0'
+	        compile 'com.github.aotian16:EPerm:v1.1.1'
 	}
 ```
 ## Or Download this project and import as a module
@@ -108,6 +108,7 @@ public class MainActivity extends AppCompatActivity {
 | :--: | :-----: | ------------------- |
 |  1   |  1.0.0  | First version       |
 |  2   |  1.1.0  | add EPerm constants |
+|  3   |  1.1.1  | update appcompat    |
 
 # [LICENSE](https://github.com/aotian16/EPerm/blob/master/LICENSE)
 
